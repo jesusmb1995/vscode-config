@@ -134,6 +134,23 @@
         "key": "alt+h",
         "command": "workbench.action.terminal.toggleTerminal"
     },
+    // ── Quick open / search bar: ctrl+n/p to navigate list (vim-style) ──────
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    // Prevent ctrl+p from re-opening quick open while already inside it
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen",
+        "when": "inQuickOpen"
+    },
     // ── NvChad: <C-n> toggle file explorer (NvimTreeToggle) ──────────────────
     // Kill every default ctrl+n binding so nothing else fires
     { "key": "ctrl+n", "command": "-workbench.action.files.newUntitledFile" },

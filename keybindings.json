@@ -1,1 +1,168 @@
-../../Code/User/keybindings.json
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "alt+v",
+        "command": "toggleVim"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "redo"
+    },
+    {
+        "key": "ctrl+shift+z",
+        "command": "-redo"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "alt+f4",
+        "command": "-workbench.action.closeWindow"
+    },
+    {
+        "key": "alt+f4",
+        "command": "workbench.action.closeOtherEditors"
+    },
+    {
+        "key": "ctrl+w v",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
+        "key": "ctrl+k ctrl+\\",
+        "command": "-workbench.action.splitEditorRight"
+    },
+    {
+        "key": "ctrl+w s",
+        "command": "workbench.action.splitEditorUp"
+    },
+    {
+        "key": "ctrl+k ctrl+\\",
+        "command": "-workbench.action.splitEditorUp"
+    },
+    {
+        "key": "ctrl+w l",
+        "command": "workbench.action.focusNextGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+tab",
+        "command": "-workbench.action.focusNextGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+w h",
+        "command": "workbench.action.focusPreviousGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+alt+tab",
+        "command": "-workbench.action.focusPreviousGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+i",
+        "command": "explorer.newFile"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "f12",
+        "command": "-editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "f12",
+        "command": "editor.action.goToTypeDefinition",
+        "when": "editorHasTypeDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "-editor.action.goToTypeDefinition",
+        "when": "editorHasTypeDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "escape",
+        "command": "-workbench.action.terminal.clearSelection",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && terminalTextSelected && !terminalFindVisible || terminalFocusInAny && terminalProcessSupported && terminalTextSelected && !terminalFindVisible"
+    },
+    {
+        "key": "escape",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "-workbench.action.closeWindow"
+    },
+    {
+        "key": "ctrl+w c",
+        "command": "composer.closeComposerTab",
+        "when": "composerFocused"
+    },
+    {
+        "key": "ctrl+w c",
+        "command": "-composer.closeComposerTab",
+        "when": "composerFocused"
+    },
+    {
+        "key": "ctrl+w q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w c",
+        "command": "aichat.focuschatpaneaction"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "composerMode.agent"
+    },
+    // ── NvChad: <A-h> toggle horizontal terminal ─────────────────────────────
+    {
+        "key": "alt+h",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    // ── NvChad: <C-n> toggle file explorer (NvimTreeToggle) ──────────────────
+    // Kill every default ctrl+n binding so nothing else fires
+    { "key": "ctrl+n", "command": "-workbench.action.files.newUntitledFile" },
+    { "key": "ctrl+n", "command": "-explorer.newFile" },
+    { "key": "ctrl+n", "command": "-list.focusDown" },
+    { "key": "ctrl+n", "command": "-workbench.action.quickOpenNavigateNextInFilePicker" },
+    // Hide sidebar when: explorer has focus OR sidebar is visible but editor has focus
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "explorerViewletFocus || (sideBarVisible && editorTextFocus)"
+    },
+    // Open + focus explorer when sidebar is not visible
+    {
+        "key": "ctrl+n",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "!sideBarVisible"
+    },
+    // ── Sidebar ↔ Editor focus navigation ────────────────────────────────────
+    // Ctrl+→  from sidebar/panel → jump to editor
+    {
+        "key": "ctrl+right",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "sideBarFocus || !editorTextFocus"
+    },
+    // Ctrl+←  from editor (normal mode only, so word-nav in insert is untouched)
+    {
+        "key": "ctrl+left",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    }
+]

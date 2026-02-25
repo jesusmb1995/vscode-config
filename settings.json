@@ -3,5 +3,128 @@
     "editor.lineNumbers": "relative",
     "vim.commandLineModeKeyBindings": [],
     "zenMode.showTabs": "none",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+
+    "vim.leader": " ",
+    // Hand <C-n> back to VS Code so keybindings.json controls it globally
+    "vim.handleKeys": {
+        "<C-n>": false
+    },
+
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // ── File finding (telescope equivalents) ────────────────────────────
+        { "before": ["<leader>", "f", "f"], "commands": ["workbench.action.quickOpen"] },
+        { "before": ["<leader>", "f", "F"], "commands": ["workbench.action.quickOpen"] },
+        { "before": ["<leader>", "f", "a"], "commands": ["workbench.action.quickOpen"] },
+        { "before": ["<leader>", "f", "w"], "commands": ["workbench.action.findInFiles"] },
+        { "before": ["<leader>", "f", "b"], "commands": ["workbench.action.showAllEditors"] },
+        { "before": ["<leader>", "f", "o"], "commands": ["workbench.action.openRecent"] },
+        { "before": ["<leader>", "f", "z"], "commands": ["actions.find"] },
+        { "before": ["<leader>", "f", "m"], "commands": ["editor.action.formatDocument"] },
+
+        // ── Symbols / LSP ────────────────────────────────────────────────────
+        // <leader>ts / tS  →  workspace symbols
+        { "before": ["<leader>", "t", "s"], "commands": ["workbench.action.showAllSymbols"] },
+        { "before": ["<leader>", "t", "S"], "commands": ["workbench.action.showAllSymbols"] },
+        // <leader>s        →  document symbols (symbols-outline)
+        { "before": ["<leader>", "s"], "commands": ["workbench.action.gotoSymbol"] },
+        // <leader>cs       →  symbols (trouble)
+        { "before": ["<leader>", "c", "s"], "commands": ["workbench.action.gotoSymbol"] },
+        // <leader>cl       →  LSP references (trouble)
+        { "before": ["<leader>", "c", "l"], "commands": ["editor.action.goToReferences"] },
+        // <leader>cm       →  git commits (telescope)
+        { "before": ["<leader>", "c", "m"], "commands": ["git.viewHistory"] },
+
+        // ── Buffers / Tabs ───────────────────────────────────────────────────
+        { "before": ["<leader>", "b"], "commands": ["workbench.action.files.newUntitledFile"] },
+        { "before": ["<leader>", "T"], "commands": ["workbench.action.files.newUntitledFile"] },
+        // <leader>x  close buffer,  <leader>X  close tab+buffer
+        { "before": ["<leader>", "x"], "commands": ["workbench.action.closeActiveEditor"] },
+        { "before": ["<leader>", "X"], "commands": ["workbench.action.closeActiveEditor"] },
+
+        // ── Editor / UI ──────────────────────────────────────────────────────
+        // <leader>?  cheatsheet → open settings.json (keybindings overview)
+        { "before": ["<leader>", "?"], "commands": ["workbench.action.openSettingsJson"] },
+        { "before": ["<leader>", "e"], "commands": ["workbench.files.action.focusFilesExplorer"] },
+        { "before": ["<leader>", "F"], "commands": ["editor.action.formatDocument"] },
+        { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+        { "before": ["<leader>", "l"], "commands": ["editor.action.fixAll"] },
+        { "before": ["<leader>", "w", "K"], "commands": ["workbench.action.openGlobalKeybindings"] },
+        { "before": ["<leader>", "w", "k"], "commands": ["workbench.action.openGlobalKeybindings"] },
+
+        // ── Diagnostics / Trouble ────────────────────────────────────────────
+        { "before": ["<leader>", "x", "x"], "commands": ["workbench.actions.view.problems"] },
+        { "before": ["<leader>", "x", "X"], "commands": ["workbench.actions.view.problems"] },
+        { "before": ["<leader>", "x", "L"], "commands": ["workbench.actions.view.problems"] },
+        { "before": ["<leader>", "x", "Q"], "commands": ["workbench.actions.view.problems"] },
+
+        // ── Git ──────────────────────────────────────────────────────────────
+        { "before": ["<leader>", "g", "g"], "commands": ["workbench.view.scm"] },
+        { "before": ["<leader>", "g", "t"], "commands": ["workbench.view.scm"] },
+        { "before": ["<leader>", "g", "b"], "commands": ["git.checkout"] },
+        { "before": ["<leader>", "g", "B"], "commands": ["git.blame"] },
+        { "before": ["<leader>", "g", "l"], "commands": ["git.viewHistory"] },
+        { "before": ["<leader>", "g", "z"], "commands": ["git.stash"] },
+        { "before": ["<leader>", "g", "p"], "commands": ["git.pull"] },
+        { "before": ["<leader>", "g", "P"], "commands": ["git.push"] },
+        { "before": ["<leader>", "g", "f"], "commands": ["git.fetch"] },
+        { "before": ["<leader>", "g", "d"], "commands": ["git.openChange"] },
+        { "before": ["<leader>", "g", "D"], "commands": ["git.openChange"] },
+
+        // ── Git conflict resolution ──────────────────────────────────────────
+        { "before": ["<leader>", "g", "c", "r"], "commands": ["merge-conflict.find.conflicts"] },
+        { "before": ["<leader>", "g", "c", "l"], "commands": ["merge-conflict.find.conflicts"] },
+        { "before": ["<leader>", "g", "c", "o"], "commands": ["merge-conflict.accept.current"] },
+        { "before": ["<leader>", "g", "c", "t"], "commands": ["merge-conflict.accept.incoming"] },
+        { "before": ["<leader>", "g", "c", "b"], "commands": ["merge-conflict.accept.both"] },
+        { "before": ["<leader>", "g", "c", "n"], "commands": ["merge-conflict.accept.selection"] },
+
+        // ── Debug (nvim-dap equivalents) ─────────────────────────────────────
+        { "before": ["<leader>", "d", "b"], "commands": ["editor.debug.action.toggleBreakpoint"] },
+        { "before": ["<leader>", "d", "B"], "commands": ["editor.debug.action.conditionalBreakpoint"] },
+        // dc  start if idle, continue if paused
+        { "before": ["<leader>", "d", "c"], "commands": ["workbench.action.debug.start"] },
+        { "before": ["<leader>", "d", "s"], "commands": ["workbench.action.debug.stop"] },
+        { "before": ["<leader>", "d", "o"], "commands": ["workbench.action.debug.stepOver"] },
+        { "before": ["<leader>", "d", "i"], "commands": ["workbench.action.debug.stepInto"] },
+        { "before": ["<leader>", "d", "u"], "commands": ["workbench.action.debug.stepOut"] },
+        { "before": ["<leader>", "d", "r"], "commands": ["workbench.action.debug.restart"] },
+        { "before": ["<leader>", "d", "C"], "commands": ["editor.debug.action.runToCursor"] },
+        { "before": ["<leader>", "d", "h"], "commands": ["editor.debug.action.showDebugHover"] },
+        { "before": ["<leader>", "d", "d"], "commands": ["workbench.view.debug"] },
+
+        // ── Terminal ─────────────────────────────────────────────────────────
+        // <leader>h  horizontal term,  <leader>v  vertical (split) term
+        { "before": ["<leader>", "h"], "commands": ["workbench.action.terminal.new"] },
+        { "before": ["<leader>", "v"], "commands": ["workbench.action.terminal.split"] },
+        // <leader>rr  re-run last command (savecmd-nvim equivalent)
+        { "before": ["<leader>", "r", "r"], "commands": ["workbench.action.terminal.runRecentCommand"] },
+
+        // ── Python venv (venv-selector) ──────────────────────────────────────
+        { "before": ["<leader>", "V", "s"], "commands": ["python.setInterpreter"] },
+
+        // ── NvChad direct bindings (non-leader) ──────────────────────────────
+        // <C-n> is handed back to VS Code via vim.handleKeys (see below),
+        // so keybindings.json owns the sidebar toggle unconditionally.
+        // <A-h>  toggleable horizontal terminal
+        { "before": ["<M-h>"], "commands": ["workbench.action.terminal.toggleTerminal"] },
+        // <A-i>  toggleable float terminal (closest: toggle panel)
+        { "before": ["<M-i>"], "commands": ["workbench.action.terminal.toggleTerminal"] }
+    ],
+
+    // ── Terminal: default to tmux ─────────────────────────────────────────────
+    // Attaches to existing "main" session or creates one — same session across
+    // all Cursor terminal panes, navigate between tasks with tmux windows/panes.
+    "terminal.integrated.profiles.linux": {
+        "tmux": {
+            "path": "tmux",
+            "args": ["new-session", "-A", "-s", "main"]
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "tmux",
+
+    "vim.visualModeKeyBindingsNonRecursive": [
+        { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+        { "before": ["<leader>", "F"], "commands": ["editor.action.formatSelection"] }
+    ]
 }

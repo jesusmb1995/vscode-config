@@ -1,0 +1,7 @@
+{
+    "window.commandCenter": true,
+    "editor.lineNumbers": "relative",
+    "vim.commandLineModeKeyBindings": [],
+    "zenMode.showTabs": "none",
+    "explorer.confirmDelete": false
+}
